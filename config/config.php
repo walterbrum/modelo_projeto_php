@@ -18,7 +18,7 @@ $config = array(
  * Define o diretório ROOT do projeto.
  * Espera-se que o acesso ao script seja feito na pasta /root/public/
  */
-defined("ROOT_DIR") or define("ROOT_DIR", realpath(dirname(__FILE__) . '/..'));
+defined("ROOT_DIR") or define("ROOT_DIR", realpath(__DIR__ . '/..'));
 
 
 /**

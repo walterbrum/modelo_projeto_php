@@ -1,7 +1,7 @@
 <?php
 require '../config/config.php';
-require '../src/autoload.php';
+require '../config/autoload.php';
 
-echo 'Versão: '.$config['version'];
-echo '<br>';
-echo ROOT_DIR;
+$app = new Vendor\App();
+$app->start();
+

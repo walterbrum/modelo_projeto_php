@@ -1,0 +1,42 @@
+ROTEADOR ORIENTADO A OBJETOS
+
+O roteador permite definir rotas para os Controllers.
+Abaixo uma explicação de como montar os roteamentos:
+
+
+Padrões de Rota (Route Patterns)
+
+Os padrões de rota podem ser estáticos ou dinâmico
+
+Padrão estático: /home, /login, /convenio/ativos.
+Padrão dinâmico são expressões regulares (PCRE): /usuarios/(\d+).
+
+Subpatterns comuns:
+
+\d+ = Um ou mais dígitos (0-9)
+\w+ = Um ou mais caracteres (a-z 0-9 _)
+[a-z0-9_-]+ = Um ou mais caracteres (a-z 0-9z _) mais o hifen (-)
+.* = Qualquer caractere (incluindo a /), zero ou mais vezes
+[^/]+ = Qualquer caractere menos a /, uma ou mais vezes
+
+
+Os subpatterns definidos em padrões de rotas dinâmicas são convertidos em parâmetros que são passados ​​para a função de tratamento de rotas. O pré-requisito é que esses subpatterns precisam ser definidos como subpatterns entre parênteses, o que significa que eles devem ser encapsulados entre parênteses:
+
+
+// Errado
+$router->add('/usuarios/\w+', function($nome) {
+    echo 'Usuário: ' . $nome;
+});
+
+// Certo
+$router->add('/usuarios/(\w+)', function($nome) {
+    echo 'Usuário: ' . $nome;
+});
+
+Note: A barra / no início de um padrão não é obrigatório, mas é recomendado.
+
+Quando múltiplos subpatterns são definidos, os parâmetros resultantes do tratamento de rotas são passados para a função de tratamento de rotas na ordem em que estão definidos:
+
+$router->get('/usuario/(\d+)/objeto/(\d+)', function($usuarioId, $objetoId) {
+    echo 'Usuário id: ' . $usuarioId . ', objeto id:' . $objetoId);
+});

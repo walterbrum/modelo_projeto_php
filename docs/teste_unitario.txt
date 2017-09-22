@@ -1,0 +1,5 @@
+Na pasta raiz, digitar o seguinte comando:
+
+php bin/phpunit --bootstrap config/autoload.php tests/
+
+Irá fazer todos os testes unitários contidos no diretório "tests/"

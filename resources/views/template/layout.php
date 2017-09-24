@@ -8,10 +8,16 @@
 	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 </head>
 <body>
-<header class="w3-container"></header>
-<div class="w3-content">
+<header class="w3-container w3-indigo">
+	<div class="w3-content">
+		<h1>Cabeçalho</h1>
+	</div>
+</header>
 	<?= $conteudo ?>
-</div>
-<footer class="w3-container"></footer>
+<footer class="w3-container w3-center">
+	<div class="w3-content">
+		<p class="w3-text-gray">Rodapé</p>
+	</div>
+</footer>
 </body>
 </html>

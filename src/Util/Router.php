@@ -91,7 +91,7 @@ class Router
 
         // nenhuma rota tratada
     	if (!$match) {
-            include '../src/view/erro/404_not_found.php';
+            include '../resources/views/erro/404_not_found.php';
             return false;
     	}
 

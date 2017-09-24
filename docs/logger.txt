@@ -1,0 +1,66 @@
+REALIZANDO LOGS DO SISTEMA
+
+IMPORTANTE: É necessário que existe uma pasta log na raiz do projeto.
+
+
+Cada instância de Logger possui um (nome).
+
+Pode-se criar muitos Loggers, cada um definindo um nome (por exemplo: db, pedido, roteador, ...) e cada um deles pode ser definido o arquivo que será armazenado o log.
+
+O nome é refletido nos logs e permite que você veja ou filtre registros facilmente.
+
+Existem oito níveis de RFC 5424 (depuração, informação, aviso, aviso, erro, crítica, alerta, emergência), que estão presentes para fins de filtragem básicos.
+
+
+Níveis de registro descritos pelo RFC 5424:
+
+
+DEBUG: informações de depuração detalhadas.
+
+INFO: eventos interessantes. Exemplos: logs do usuário, logs do SQL.
+
+AVISO: eventos normais, mas significativos.
+
+AVISO: ocorrências excepcionais que não são erros. Exemplos: uso de APIs obsoletas, mau uso de uma API, coisas indesejáveis ​​que não são necessariamente erradas.
+
+ERROR: erros de tempo de execução que não requerem ação imediata, mas geralmente devem ser registrados e monitorados.
+
+CRÍTICO: condições críticas. Exemplo: Componente da aplicação indisponível, exceção inesperada.
+
+ALERTA: as ações devem ser tomadas imediatamente. Exemplo: Todo o site, banco de dados indisponível, etc. Isso deve ativar os alertas e despertá-lo.
+
+EMERGÊNCIA: Emergência: o sistema é inutilizável.
+
+
+
+Configurando um Logger
+
+Aqui está uma configuração básica para registrar um Logger:
+
+<?php
+
+use  Vendor\Util\Logger\Logger; 
+
+// Crie o logger 
+$logger = new Logger('meu_logger'); 
+
+// Agora você pode usar o logger 
+$logger->info('Meu logger está pronto');
+
+
+Vamos explicar isso. O primeiro passo é criar a instância do Logger que será usada em seu código. O argumento é um nome do Logger, que é útil quando você usa vários registradores (veja abaixo para obter mais detalhes sobre isso).
+
+Também é possível criar o logger estipulando o nome do arquivo a ser gravado.
+Exemplo:
+
+// Crie o logger
+$logger - new Logger('meu_logger', arquivo).
+
+
+********** IMPORTANTE *********
+Os logs são salvos na pasta:
+projeto/log
+
+o nome de arquivo padrão é: log.log caso não seja definido o segundo argumento.
+
+Obs.: o nome do arquivo não precisa conter o diretório nem a extensão, que é adicionado automaticamente

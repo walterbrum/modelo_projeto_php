@@ -1,15 +1,25 @@
 <?php
 namespace Vendor\Controller;
 
+use Vendor\Util\Logger\Logger;
+
 /**
 * Classe Home
 */
-class Home
+class Home extends Controller
 {
+	private $log;
+
+	public function __construct()
+	{
+        $this->log = new Logger('Home');
+	}
+
 	public function exibir()
 	{
-		$titulo = 'Home';
-		$conteudo = 'Você está na Home';
-		include '../src/view/layout.php';
+		$ctx['titulo'] = 'Home';
+		$this->view('home', $ctx);
+
+		$this->log->debug('Dentro do Home');
 	}
 }
